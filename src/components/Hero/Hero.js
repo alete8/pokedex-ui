@@ -1,7 +1,7 @@
 import React from "react";
 
 const Hero = () => {
-  return <div>Here we will code the Hero component</div>;
+  return <div>Aca vamos a desarrollar la seccion Hero</div>;
 };
 
 export default Hero;
