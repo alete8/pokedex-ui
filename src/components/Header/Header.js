@@ -18,13 +18,13 @@ const HeaderNav = () => {
   return (
     <nav className="header-nav">
       
-      <Link to="#home" className='header-nav-link'>Home</Link>
+      <a href='#home' className='header-nav-link'>Home</a>
 
-      <Link to="#history" className='header-nav-link'>History</Link>
+      <a href='#history' className='header-nav-link'>History</a>
 
-      <Link to="#Video" className='header-nav-link'>Video</Link>
+      <a href='#video' className='header-nav-link'>Video</a>
 
-      <Link to="#contact" className='header-nav-link'>Contact</Link>
+      <a href='#contact' className='header-nav-link'>Contact</a>
 
       <Link to="pokedex" className='header-nav-link'>Pokedex</Link>
 
