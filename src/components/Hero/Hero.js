@@ -1,5 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
 import './Hero.css';
 
 const pikachuImg = require.context('../../assets', true);
@@ -21,19 +20,7 @@ const Hero = () => {
       </div>
     </div>
     </div>
-=======
-import styled from 'styled-components';
-
-const Hero = () => {
-  return (
-    <StyledContainer>Aca vamos a desarrollar la seccion Hero</StyledContainer>
->>>>>>> f8990fcbf1d37934f66f1664b34f8e8475c734ec
   );
 };
 
 export default Hero;
-
-const StyledContainer = styled.div`
-  display: flex;
-  background-color: yellow;
-`;
