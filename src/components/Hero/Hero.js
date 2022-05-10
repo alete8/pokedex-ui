@@ -5,7 +5,7 @@ const pikachuImg = require.context('../../assets', true);
 
 const Hero = () => {
   return (
-    <div>
+    <div id="home">
       <div className="home">
         
         <div className="homeImg">
