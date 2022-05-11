@@ -58,25 +58,14 @@
     
 }
 
-.homeButton{
+ .homeButton{
     display: flex;
     position: absolute;
     bottom: 10%;
-    justify-content: center;
-    align-items: center;
-    width: 20vw;
-    height: 80px;
-    max-height:40px ;
-    border-radius: 40px 40px;
-    border: none;
     font-size: 1.2em;
     color: white;
     background-image: -webkit-linear-gradient(left, #5aa4f8, #58d47d);
-    cursor: pointer;
-    
-
-    
-}
+} 
 
 .heroWave{
     display: flex;

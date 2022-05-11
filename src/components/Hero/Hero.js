@@ -1,5 +1,6 @@
 import React from 'react';
 import './Hero.css';
+import { Button } from '../Components-Styled/StyleButton';
 
 const pikachuImg = require.context('../../assets', true);
 
@@ -28,7 +29,7 @@ const Hero = () => {
       </div>
       
       <div className='heroButtonBox'>
-        <button className="homeButton">View more</button>
+        <Button className='homeButton'>View more</Button>
       </div>
       
     </div>
