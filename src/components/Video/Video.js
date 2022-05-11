@@ -1,6 +1,7 @@
 import React from 'react';
 import './Video.css';
 import { Button } from '../Components-Styled/StyleButton';
+import { ToHome } from '../Components-Styled/ToHome';
 
 const BackgroundImg = require.context('../../assets', true);
 
@@ -43,6 +44,11 @@ const Video = () => {
           </div>
         </div>
       </div>
+      <div className="toHome">
+      <a href="#home" >
+        <ToHome>Subir</ToHome>
+      </a>
+    </div>
     </div>
   );
 };

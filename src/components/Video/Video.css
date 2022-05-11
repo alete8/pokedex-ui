@@ -60,3 +60,14 @@
     color: white;
     background-image: -webkit-linear-gradient(30deg, #a50722,#dd490e, #f0b535);
 }
+
+.toHome{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5vw;
+}
+
+.toHome a{
+    text-decoration: none;
+}

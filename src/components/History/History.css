@@ -220,3 +220,14 @@
     text-align: justify;
     
 }
+
+.toHome{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2vw;
+}
+
+.toHome a{
+    text-decoration: none;
+}
