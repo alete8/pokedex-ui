@@ -18,9 +18,10 @@
     width: 40vw;
     height: 20vw;
     margin: auto;
-    margin-top: 5vw;
-    justify-content: center;
+    margin-top: 3vw;
+    margin-bottom: 0;
     align-items: center;
+    
     
 }
 
@@ -48,8 +49,21 @@
     padding: 1vw;
     border-radius: 40px 40px;
     margin: 1vw;
+    margin-bottom: 0;
+    padding-bottom: ;
     font-size: 16px;
     border:0;
     color: white;
     background-image: -webkit-linear-gradient(left, #5aa4f8, #58d47d);
+}
+
+.toHome{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 18vw;
+}
+
+.toHome a{
+    text-decoration: none;
 }

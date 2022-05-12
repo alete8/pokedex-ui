@@ -1,6 +1,7 @@
 import React from 'react';
 import './Contact.css';
 import { Button } from '../Components-Styled/StyleButton';
+import { ToHome } from '../Components-Styled/ToHome';
 
 const Contact = () => {
   return (
@@ -27,6 +28,11 @@ const Contact = () => {
         </div>
         <input className="inputBtn" type="submit" value="Submit" />
       </form>
+      <div className="toHome">
+      <a href="#home" >
+        <ToHome>Subir</ToHome>
+      </a>
+      </div>
     </div>
   );
 };

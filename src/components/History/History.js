@@ -1,5 +1,6 @@
 import React from 'react';
 import './History.css';
+import { ToHome } from '../Components-Styled/ToHome';
 
 const pokeball = require.context('../../assets', true);
 const gameboy = require.context('../../assets', true);
@@ -66,6 +67,11 @@ const History = () => {
         </div>
       </div>
     </div>
+    <div className="toHome">
+      <a href="#home" >
+        <ToHome>Subir</ToHome>
+      </a>
+      </div>
     </div>
   );
 };
