@@ -1,49 +1,72 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './Header.css';
+import styled from 'styled-components';
 
+const POKE_ICON = 'https://cdn-icons-png.flaticon.com/512/361/361998.png';
 
-
-const HeaderLogo = () => {
-  const poke = 'https://cdn-icons-png.flaticon.com/512/361/361998.png';
-  return (
-    <a className='header-logo-conteiner' href="/">
-      <img className="pokeIcon" src={poke} />
-      <p>Pokedex</p>
-    </a>
-  );
-};
-
-const HeaderNav = () => {
-  return (
-    <nav className="header-nav">
-      
-      <a href='#home' className='header-nav-link'>Home</a>
-
-      <a href='#history' className='header-nav-link'>History</a>
-
-      <a href='#video' className='header-nav-link'>Video</a>
-
-      <a href='#contact' className='header-nav-link'>Contact</a>
-
-      <Link to="pokedex" className='header-nav-link'>Pokedex</Link>
-
-      <Link to="my-favs" className='header-nav-link'>MyFavs</Link>
-    </nav>
-  );
-};
+const headerData = [
+  { label: 'Home', href: '#home' },
+  { label: 'History', href: '#history' },
+  { label: 'Video', href: '#video' },
+  { label: 'Contact', href: '#contact' },
+  { label: 'Pokedex', href: '/pokedex' },
+  { label: 'MyFavs', href: '/my-favs' },
+];
 
 const Header = () => {
   return (
-    <header className="header">
-
-      <HeaderLogo />
-
-      <HeaderNav />
-
-      
-    </header>
+    <HeaderContainer>
+      <HeaderLogoContainer href="/">
+        <HeaderLogo src={POKE_ICON} />
+        <HeaderText>Pokedex</HeaderText>
+      </HeaderLogoContainer>
+      <HeaderNav>
+        {headerData.map((item, idx) => (
+          <HeaderNavLink href={item.href} key={idx}>{item.label}</HeaderNavLink>
+        ))}
+      </HeaderNav>
+    </HeaderContainer>
   );
 };
 
 export default Header;
+
+const HeaderContainer = styled.header`
+  background-color: rgb(240, 240, 123);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+`;
+
+const HeaderLogoContainer = styled.a`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin-left: 3vw;
+`;
+
+const HeaderLogo = styled.img`
+  display: flex;
+  width: 64px;
+`;
+
+const HeaderText = styled.p`
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-left: 10px;
+  color: black;
+`;
+
+const HeaderNav = styled.nav`
+  display: flex;
+  width: 360px;
+  justify-content: space-around;
+  margin-right: 5vw;
+`;
+
+const HeaderNavLink = styled.a`
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+`;
