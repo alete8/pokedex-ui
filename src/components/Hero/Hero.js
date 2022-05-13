@@ -1,6 +1,6 @@
 import React from 'react';
 import './Hero.css';
-import { Button } from '../Components-Styled/StyleButton';
+import PokeButton from '../PokeButton/PokeButton';
 
 const pikachuImg = require.context('../../assets', true);
 
@@ -29,9 +29,8 @@ const Hero = () => {
       </div>
       
       <div className='heroButtonBox'>
-        <Button className='homeButton'>View more</Button>
+        <PokeButton>View more</PokeButton>
       </div>
-      
     </div>
   );
 };

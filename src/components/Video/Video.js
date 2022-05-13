@@ -1,7 +1,6 @@
 import React from 'react';
+import PokeButton from '../PokeButton/PokeButton';
 import './Video.css';
-import { Button } from '../Components-Styled/StyleButton';
-import { ToHome } from '../Components-Styled/ToHome';
 
 const Video = () => {
   return (
@@ -39,15 +38,10 @@ const Video = () => {
 
           <div>
             <a href="https://www.youtube.com/c/PokemonLATAM">
-              <Button className="videoButton">View more</Button>
+              <PokeButton>View more</PokeButton>
             </a>
           </div>
         </div>
-      </div>
-      <div className="toHome">
-        <a href="#home">
-          <ToHome>Subir</ToHome>
-        </a>
       </div>
     </div>
   );

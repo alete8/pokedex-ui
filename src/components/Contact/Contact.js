@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import './Contact.css';
-import { Button } from '../Components-Styled/StyleButton';
-import { ToHome } from '../Components-Styled/ToHome';
 
 const Contact = () => {
   const [nameInput, setNameInput] = useState('Name');
@@ -37,11 +35,6 @@ const Contact = () => {
         </div>
         <input className="inputBtn" type="submit" value="Submit" />
       </form>
-      <div className="toHome">
-        <a href="#home">
-          <ToHome>Subir</ToHome>
-        </a>
-      </div>
     </div>
   );
 };
