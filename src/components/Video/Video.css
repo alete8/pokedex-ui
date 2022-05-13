@@ -1,73 +1,60 @@
-
-.conteiner{
-    display: flex;
-    width: 100vw;
-    margin-top: 10%;
-    height: 40vw;
+.conteiner {
+  display: flex;
+  width: 100vw;
+  margin-top: 10%;
+  height: 40vw;
 }
 
-.conteinerVideo{
-    display: flex;
-    width: 50%;
-    padding: 4vw;
+.conteinerVideo {
+  display: flex;
+  width: 50%;
+  padding: 4vw;
 }
 
-.conteinerVideoFix{
-    width: 80%;
-    height: 20vw;
-    margin: auto;
-    margin-right: -2vw;
+.conteinerVideoFix {
+  width: 80%;
+  height: 20vw;
+  margin: auto;
+  margin-right: -2vw;
 }
 
-.videoWaveUp{
-    display: flex;
-    position: absolute;
-    z-index: -1;
-    margin-top: -3vw;
-    fill:#0778a5;
+.videoWaveUp {
+  display: flex;
+  position: absolute;
+  z-index: -1;
+  margin-top: -3vw;
+  fill: #0778a5;
 }
 
-.videoWaveDown{
-    display: flex;
-    position: absolute;
-    margin-top: 26vw;
-    z-index: -1;
-    fill:#0778a5;
+.videoWaveDown {
+  display: flex;
+  position: absolute;
+  margin-top: 26vw;
+  z-index: -1;
+  fill: #0778a5;
 }
 
-.videoText{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 50vw;
-    font-size: 3vw;
-    font-weight: bold;
+.videoText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  font-size: 3vw;
+  font-weight: bold;
 }
 
-.videoText h2{
-    display:table-cell;
-    text-align: center;
-    width: 60%;
-    font-size: 3vw;
-    margin-left: -10vw;
-
+.videoText h2 {
+  display: table-cell;
+  text-align: center;
+  width: 60%;
+  font-size: 3vw;
+  margin-left: -10vw;
 }
 
-.videoButton{
-    margin-left: -10vw;
-    font-size: 1.2vw;
-    color: white;
-    background-image: -webkit-linear-gradient(30deg, #a50722,#dd490e, #f0b535);
-}
-
-.toHome{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 5vw;
-}
-
-.toHome a{
-    text-decoration: none;
+.videoButton {
+  margin-left: -10vw;
+  font-size: 1.2vw;
+  color: white;
+  background-image: -webkit-linear-gradient(30deg, #a50722, #dd490e, #f0b535);
 }

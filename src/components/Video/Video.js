@@ -1,9 +1,6 @@
 import React from 'react';
+import PokeButton from '../PokeButton/PokeButton';
 import './Video.css';
-import { Button } from '../Components-Styled/StyleButton';
-import { ToHome } from '../Components-Styled/ToHome';
-
-const BackgroundImg = require.context('../../assets', true);
 
 const Video = () => {
   return (
@@ -30,9 +27,9 @@ const Video = () => {
               height="100%"
               src="https://www.youtube.com/embed/uDIoEbbFKAY?controls=0"
               title="YouTube video player"
-              frameborder="0"
+              frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
+              allowFullScreen
             ></iframe>
           </div>
         </div>
@@ -40,15 +37,12 @@ const Video = () => {
           <h2> Checkout the Official Pokémon Youtube channel</h2>
 
           <div>
-            <a href='https://www.youtube.com/c/PokemonLATAM'><Button className="videoButton">View more</Button></a>
+            <a href="https://www.youtube.com/c/PokemonLATAM">
+              <PokeButton>View more</PokeButton>
+            </a>
           </div>
         </div>
       </div>
-      <div className="toHome">
-      <a href="#home" >
-        <ToHome>Subir</ToHome>
-      </a>
-    </div>
     </div>
   );
 };
