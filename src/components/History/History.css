@@ -35,6 +35,7 @@
 .icon1980 {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 4em;
 }
 
@@ -95,6 +96,7 @@
 
 .icon1996 {
   display: flex;
+  align-items: center;
   justify-content: center;
   width: 4em;
 }
@@ -156,6 +158,7 @@
 
 .icon1998 {
   display: flex;
+  align-items: center;
   justify-content: center;
   width: 4em;
 }
