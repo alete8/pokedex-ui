@@ -16,10 +16,10 @@ const ShowBtn = () => {
       const display = window.scrollY <= 450 ? 'none' : 'block';
       setDisplay(display);
     };
-    
+
     window.addEventListener('scroll', handleScroll);
   }, []);
-  
+
   return display;
 };
 
@@ -32,7 +32,14 @@ const Home = () => {
       <Video />
       <Contact />
       <Footer />
-      <ToTop onClick={() => window.scrollTo(0, 0)}>
+      <ToTop
+        onClick={() =>
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          })
+        }
+      >
         <PokeButton variant="secondary">Subir</PokeButton>
       </ToTop>
     </HomeContainer>
