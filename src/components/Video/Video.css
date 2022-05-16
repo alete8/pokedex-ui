@@ -1,6 +1,6 @@
 .conteiner {
   display: flex;
-  width: 100vw;
+  width: 100%;
   margin-top: 10%;
   height: 40vw;
 }
@@ -8,30 +8,33 @@
 .conteinerVideo {
   display: flex;
   width: 50%;
-  padding: 4vw;
 }
 
 .conteinerVideoFix {
-  width: 80%;
+  width: 70%;
   height: 20vw;
   margin: auto;
-  margin-right: -2vw;
+  margin-right: 2vw;
+  margin-top: 18vw;
 }
 
 .videoWaveUp {
   display: flex;
   position: absolute;
+  height: 29.7vw;
   z-index: -1;
-  margin-top: -3vw;
+  margin-top: -5vw;
   fill: #0778a5;
 }
 
 .videoWaveDown {
   display: flex;
   position: absolute;
-  margin-top: 26vw;
+  height: 29.7vw;
+  margin-top: 24vw;
   z-index: -1;
   fill: #0778a5;
+  transform: rotate(180deg);
 }
 
 .videoText {
@@ -42,6 +45,7 @@
   width: 50vw;
   font-size: 3vw;
   font-weight: bold;
+  margin-top: 10vw;
 }
 
 .videoText h2 {
@@ -52,9 +56,13 @@
   margin-left: -10vw;
 }
 
-.videoButton {
-  margin-left: -10vw;
-  font-size: 1.2vw;
-  color: white;
-  background-image: -webkit-linear-gradient(30deg, #a50722, #dd490e, #f0b535);
+.videoButtonBox{
+  display: flex;
+  align-items: center;
+}
+
+.videoButtonBox a{
+  text-decoration: none;
+  margin-left: -8vw;
+  
 }

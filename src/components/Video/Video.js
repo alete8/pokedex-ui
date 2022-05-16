@@ -1,12 +1,14 @@
 import React from 'react';
+import { HeroWave } from '../../assets/icons/heroWave';
 import PokeButton from '../PokeButton/PokeButton';
+
 import './Video.css';
 
 const Video = () => {
   return (
     <div id="video">
       <div className="conteiner">
-        <svg
+        {/* <svg
           viewBox="0 0 500 150"
           preserveAspectRatio="none"
           className="videoWaveUp"
@@ -19,7 +21,13 @@ const Video = () => {
           className="videoWaveDown"
         >
           <path d="M0.00,49.98 C149.99,150.00 271.49,-49.98 500.00,49.98 L500.00,0.00 L0.00,0.00 Z"></path>
-        </svg>
+        </svg> */}
+        <div className='videoWaveUp'>
+        <HeroWave/>
+        </div>
+        <div className='videoWaveDown'>
+        <HeroWave/>
+        </div>
         <div className="conteinerVideo">
           <div className="conteinerVideoFix">
             <iframe
@@ -36,9 +44,9 @@ const Video = () => {
         <div className="videoText">
           <h2> Checkout the Official Pokémon Youtube channel</h2>
 
-          <div>
+          <div className='videoButtonBox'>
             <a href="https://www.youtube.com/c/PokemonLATAM">
-              <PokeButton>View more</PokeButton>
+              <PokeButton variant='secondary' size='lg'>View more</PokeButton>
             </a>
           </div>
         </div>

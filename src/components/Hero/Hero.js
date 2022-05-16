@@ -1,6 +1,7 @@
-import React from 'react';
+import React  from 'react';
 import './Hero.css';
 import PokeButton from '../PokeButton/PokeButton';
+import { HeroWave } from '../../assets/icons/heroWave';
 
 const pikachuImg = require.context('../../assets', true);
 
@@ -11,7 +12,9 @@ const Hero = () => {
         
         <div className="homeImg">
           <img
+            
             src={pikachuImg('./heroPikachu.png')}
+            alt="Pikachu"
             className="homeImgPikachu"
           ></img>
         </div>
@@ -21,11 +24,9 @@ const Hero = () => {
           <p>Join our comunity to find Pokémon's news</p>
         </div>
       </div>
-      <div className="heroWave">
-        
-        <svg viewBox="0 0 500 150" preserveAspectRatio="none">
-          <path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"></path>
-        </svg>
+
+      <div className="heroWave">  
+        <HeroWave size="64"/>
       </div>
       
       <div className='heroButtonBox'>
@@ -36,3 +37,7 @@ const Hero = () => {
 };
 
 export default Hero;
+
+
+
+  

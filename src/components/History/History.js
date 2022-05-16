@@ -66,7 +66,7 @@ const History = () => {
             <div className="history1998Text">
               The popularity of the anime and Yellow, I believe, led to Pikachu
               becoming the most recognizable and loved Pokémon out there. Pocket
-              Monsters’ success led to North America getting the games in 1998
+              Monsters' success led to North America getting the games in 1998
               for the Game Boy (as Pokémon Red and Blue). These few years in the
               public saw Pokémon go from a game about a hobby to a worldwide
               phenomenon
