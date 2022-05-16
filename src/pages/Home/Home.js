@@ -6,8 +6,22 @@ import History from '../../components/History/History';
 import Video from '../../components/Video/Video';
 import Contact from '../../components/Contact/Contact';
 import Footer from '../../components/Footer/Footer';
-// import BackToTop from '../../components/PokeButton/BackToTop';
 import PokeButton from '../../components/PokeButton/PokeButton';
+
+const ShowBtn = () => {
+  const [display, setDisplay] = useState('none');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const display = window.scrollY <= 450 ? 'none' : 'block';
+      setDisplay(display);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+  }, []);
+  
+  return display;
+};
 
 const Home = () => {
   return (
@@ -29,21 +43,8 @@ export default Home;
 
 const HomeContainer = styled.div``;
 
-const ShowBtn = () => {
-  const [display, setdisplay] = useState('none');
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const display = window.scrollY <= 450 ? 'none' : 'show';
-      setdisplay(display);
-    };
-    window.addEventListener('scroll', handleScroll);    
-  }, []);
-  return display;
-};
-
 const ToTop = styled.div`
-  display:${ShowBtn};
+  display: ${ShowBtn};
   position: fixed;
   bottom: 50px;
   right: 40px;
