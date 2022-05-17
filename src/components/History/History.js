@@ -1,9 +1,8 @@
 import React from 'react';
 import { IGameboy } from '../../assets/icons/gameboy';
-import {IPikachu} from '../../assets/icons/pikachu';
-import {Ipokeball} from '../../assets/icons/pokeball';
+import { IPikachu } from '../../assets/icons/pikachu';
+import { Ipokeball } from '../../assets/icons/pokeball';
 import './History.css';
-
 
 const History = () => {
   return (
@@ -12,11 +11,9 @@ const History = () => {
       <div className="historyBody">
         <div className="history1980">
           <div className="date1980">
-            {/* <img className="icon1980" src={pokeball('./pokeball2.svg')} /> */}
-          <div className='icon1980'>
-            <Ipokeball size="64"/>
-
-          </div>
+            <div className="icon1980">
+              <Ipokeball size="64" />
+            </div>
             <h1>1980</h1>
           </div>
 
@@ -45,8 +42,8 @@ const History = () => {
 
           <div className="date1996">
             {/* <img className="icon1996" src={gameboy('./gameboy.svg')} /> */}
-            <div className='icon1996'>
-            <IGameboy size="64px"/>
+            <div className="icon1996">
+              <IGameboy size="64px" />
             </div>
             <h1>1996</h1>
           </div>
@@ -55,8 +52,8 @@ const History = () => {
         <div className="history1998">
           <div className="date1998">
             {/* <img className="icon1998" src={pikachu('./pikachu.svg')} /> */}
-            <div className='icon1998'>
-            <IPikachu size="64px"/>
+            <div className="icon1998">
+              <IPikachu size="64px" />
             </div>
             <h1>1998</h1>
           </div>

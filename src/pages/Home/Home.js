@@ -9,12 +9,27 @@ import Footer from '../../components/Footer/Footer';
 import PokeButton from '../../components/PokeButton/PokeButton';
 import { ArrowUp } from '../../assets/icons/arrowUp';
 
-const ShowBtn = () => {
-  const [display, setDisplay] = useState('0');
+const ToTopBtnOpacity = () => {
+  const [display, setDisplay] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const display = window.scrollY <= 450 ? '0' : '1';
+      const display = window.scrollY <= 450 ? 0 : 1;
+      setDisplay(display);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+  }, []);
+
+  return display;
+};
+
+const ToTopBtnPointer = () => {
+  const [display, setDisplay] = useState('none');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const display = window.scrollY <= 450 ? 'none' : 'block';
       setDisplay(display);
     };
 
@@ -27,7 +42,7 @@ const ShowBtn = () => {
 const Home = () => {
   return (
     <HomeContainer>
-        <Header />
+      <Header />
       <Hero />
       <History />
       <Video />
@@ -56,12 +71,12 @@ const HomeContainer = styled.div`
 `;
 
 const ToTop = styled.div`
-  opacity: ${ShowBtn};
+  opacity: ${ToTopBtnOpacity};
   position: fixed;
   bottom: 50px;
   right: 40px;
   transition: opacity 1s;
   z-index: 50;
+
+  pointer-events: ${ToTopBtnPointer};
 `;
-
-
