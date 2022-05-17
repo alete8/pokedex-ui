@@ -3,7 +3,7 @@ import './Footer.css'
 
 const Footer = () =>{
     return(
-        <footer><p>Pókemon ♥ Farvon</p> </footer>
+        <footer><p>ALete ♥ Farvon</p> </footer>
     )
 
 }

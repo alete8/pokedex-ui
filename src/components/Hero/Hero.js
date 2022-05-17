@@ -1,4 +1,5 @@
 import React  from 'react';
+import styled from 'styled-components';
 import './Hero.css';
 import PokeButton from '../PokeButton/PokeButton';
 import { HeroWave } from '../../assets/icons/heroWave';
@@ -8,6 +9,8 @@ const pikachuImg = require.context('../../assets', true);
 const Hero = () => {
   return (
     <div id="home">
+    <HeaderInHero/>
+
       <div className="home">
         
         <div className="homeImg">
@@ -39,5 +42,14 @@ const Hero = () => {
 export default Hero;
 
 
+const HeaderInHero = styled.div`
+  
+  display:none;
 
+  @media (min-width: 768.1px) {
+      display: flex;
+      width: 100%;
+      height: 50px;
+}
+`;
   

@@ -1,7 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import styled from 'styled-components';
 import { Ipokeball } from '../../assets/icons/pokeball';
 import { Ihamburger } from '../../assets/icons/hamburger';
+
+const HandleHeaderShadow = () => {
+  const [shadow, setShadow] = useState('0px 0px black');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const shadow = window.scrollY <= 50 ? '0px 0px black' : '0px 5px 7px -3px rgba(0,0,0,0.3)';
+      setShadow(shadow);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+  }, []);
+
+  return shadow;
+};
+
+const HandleHeaderbg = () => {
+  const [bground, setBground] = useState('#f0f07b');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const bground = window.scrollY <= 50 ? '#f0f07b' : 'white';
+      setBground(bground);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+  }, []);
+
+  return bground;
+};
+
+
 
 const headerData = [
   { label: 'Home', href: '#home' },
@@ -49,7 +81,7 @@ const Header = () => {
 export default Header;
 
 const HeaderContainer = styled.header`
-  background-color: white;
+  background-color: #f0f07b;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,9 +89,14 @@ const HeaderContainer = styled.header`
   padding: 20px;
   box-sizing: border-box;
   position: relative;
+  z-index:99;
 
   @media (min-width: 768.1px) {
-    background-color: #f0f07b;
+    box-shadow: ${HandleHeaderShadow};
+    background-color:${HandleHeaderbg};
+    transition: all 1s;
+    position: fixed;
+    z-index:99;
   }
 `;
 
@@ -75,6 +112,7 @@ const HeaderText = styled.span`
   font-weight: bold;
   color: black;
   margin-left: 12px;
+  
 `;
 
 const HeaderNav = styled.nav`
@@ -84,6 +122,7 @@ const HeaderNav = styled.nav`
     display: flex;
     width: 360px;
     justify-content: space-around;
+    
   }
 `;
 

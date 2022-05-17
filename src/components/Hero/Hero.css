@@ -1,12 +1,16 @@
+
+
 .home{
     width: 100%;
     height: 35vw;
-    background-color: rgb(240, 240, 123);
+    background-color: #f0f07b;
     display: flex;
     align-items: center;
     position: absolute;
     z-index: 2;
 }
+
+
 
 .homeImg{
     width: 80%;
@@ -54,9 +58,8 @@
     justify-content: center;
     position: absolute;
     right: 0px;
-    height: 40vw;
-    max-height: 25vw;
-    bottom:70px;
+    top:18vw;
+    
 }
 
 .heroWave{
