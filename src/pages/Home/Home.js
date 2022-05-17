@@ -7,13 +7,14 @@ import Video from '../../components/Video/Video';
 import Contact from '../../components/Contact/Contact';
 import Footer from '../../components/Footer/Footer';
 import PokeButton from '../../components/PokeButton/PokeButton';
+import { ArrowUp } from '../../assets/icons/arrowUp';
 
 const ShowBtn = () => {
-  const [display, setDisplay] = useState('none');
+  const [display, setDisplay] = useState('0');
 
   useEffect(() => {
     const handleScroll = () => {
-      const display = window.scrollY <= 450 ? 'none' : 'block';
+      const display = window.scrollY <= 450 ? '0' : '1';
       setDisplay(display);
     };
 
@@ -26,7 +27,9 @@ const ShowBtn = () => {
 const Home = () => {
   return (
     <HomeContainer>
-      <Header />
+      <FixHeader>
+        <Header />
+      </FixHeader>
       <Hero />
       <History />
       <Video />
@@ -40,7 +43,9 @@ const Home = () => {
           })
         }
       >
-        <PokeButton variant="secondary">Subir</PokeButton>
+        <PokeButton variant="secondary">
+          <ArrowUp size="20" />
+        </PokeButton>
       </ToTop>
     </HomeContainer>
   );
@@ -48,11 +53,20 @@ const Home = () => {
 
 export default Home;
 
-const HomeContainer = styled.div``;
+const HomeContainer = styled.div`
+  position:relative;
+`;
 
 const ToTop = styled.div`
-  display: ${ShowBtn};
+  opacity: ${ShowBtn};
   position: fixed;
   bottom: 50px;
   right: 40px;
+  transition: opacity 1s;
+  z-index: 50;
+`;
+
+const FixHeader = styled.div`
+  display: fixed;
+  top: 50px;
 `;

@@ -1,7 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import styled from 'styled-components';
 import { Ipokeball } from '../../assets/icons/pokeball';
 import { Ihamburger } from '../../assets/icons/hamburger';
+
+const BackGround = () => {
+  const [bgColor, setBgColor] = useState('#f0f07b');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const bgColor = window.scrollY <= 10 ? '#f0f07b' : 'white';
+      setBgColor(bgColor);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+  }, []);
+
+  return bgColor;
+};
+
+
 
 const headerData = [
   { label: 'Home', href: '#home' },
@@ -49,7 +66,7 @@ const Header = () => {
 export default Header;
 
 const HeaderContainer = styled.header`
-  background-color: white;
+  background-color: ${BackGround};
   display: flex;
   justify-content: space-between;
   align-items: center;
