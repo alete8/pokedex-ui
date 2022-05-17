@@ -8,7 +8,7 @@ const BackGround = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const bgColor = window.scrollY <= 10 ? '#f0f07b' : 'white';
+      const bgColor = window.scrollY <= 50 ? '#f0f07b' : 'white';
       setBgColor(bgColor);
     };
 
@@ -66,17 +66,19 @@ const Header = () => {
 export default Header;
 
 const HeaderContainer = styled.header`
-  background-color: ${BackGround};
+  background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
-  position: relative;
+  position: fixed;
+  z-index:99;
 
   @media (min-width: 768.1px) {
-    background-color: #f0f07b;
+    background-color: ${BackGround};
+    transition: all 1s;
   }
 `;
 

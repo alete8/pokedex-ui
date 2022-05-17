@@ -27,9 +27,7 @@ const ShowBtn = () => {
 const Home = () => {
   return (
     <HomeContainer>
-      <FixHeader>
         <Header />
-      </FixHeader>
       <Hero />
       <History />
       <Video />
@@ -66,7 +64,4 @@ const ToTop = styled.div`
   z-index: 50;
 `;
 
-const FixHeader = styled.div`
-  display: fixed;
-  top: 50px;
-`;
+
