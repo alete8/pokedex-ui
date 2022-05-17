@@ -9,37 +9,22 @@ import Footer from '../../components/Footer/Footer';
 import PokeButton from '../../components/PokeButton/PokeButton';
 import { ArrowUp } from '../../assets/icons/arrowUp';
 
-const ToTopBtnOpacity = () => {
-  const [display, setDisplay] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const display = window.scrollY <= 450 ? 0 : 1;
-      setDisplay(display);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-  }, []);
-
-  return display;
-};
-
-const ToTopBtnPointer = () => {
-  const [display, setDisplay] = useState('none');
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const display = window.scrollY <= 450 ? 'none' : 'block';
-      setDisplay(display);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-  }, []);
-
-  return display;
-};
-
 const Home = () => {
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolling(window.scrollY >= 450);
+    };
+
+    // Bind the event listener
+    document.addEventListener('scroll', handleScroll);
+    return () => {
+      // Unbind the event listener
+      document.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <HomeContainer>
       <Header />
@@ -49,6 +34,7 @@ const Home = () => {
       <Contact />
       <Footer />
       <ToTop
+        scrolling={isScrolling}
         onClick={() =>
           window.scrollTo({
             top: 0,
@@ -57,7 +43,7 @@ const Home = () => {
         }
       >
         <PokeButton variant="secondary">
-          <ArrowUp size="20" />
+          <ArrowUp size="20px" />
         </PokeButton>
       </ToTop>
     </HomeContainer>
@@ -67,16 +53,15 @@ const Home = () => {
 export default Home;
 
 const HomeContainer = styled.div`
-  position:relative;
+  position: relative;
 `;
 
 const ToTop = styled.div`
-  opacity: ${ToTopBtnOpacity};
+  pointer-events: ${({ scrolling }) => (scrolling ? 'initial' : 'none')};
+  opacity: ${({ scrolling }) => (scrolling ? '1' : '0')};
+  transition: opacity 0.5s ease;
   position: fixed;
   bottom: 50px;
   right: 40px;
-  transition: opacity 1s;
   z-index: 50;
-
-  pointer-events: ${ToTopBtnPointer};
 `;
