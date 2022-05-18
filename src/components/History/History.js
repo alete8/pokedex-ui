@@ -10,12 +10,12 @@ const History = () => {
     <HistoryContainer id="history">
       <h1>Pokemon History</h1>
       <HistoryBody>
-        <History1980>
-          <HistoryDate>
+        <HistorySection color='#6dd19a' direction='left'>
+          <HistoryDate color="#6dd19a">
             <HistoryIcon>
               <Ipokeball size="64" />
             </HistoryIcon>
-            <HistoryDateH11980>1980</HistoryDateH11980>
+            <h1>1980</h1>
           </HistoryDate>
           <HistoryInfoContainer>
             <HistoryInfoTitle1980>First Steps</HistoryInfoTitle1980>
@@ -27,8 +27,8 @@ const History = () => {
               illustrator.
             </HistoryInfoText>
           </HistoryInfoContainer>
-        </History1980>
-        <History1996>
+        </HistorySection>
+        <HistorySection color='#ee4a4a' direction='right'>
           <HistoryInfoContainer>
             <HistoryInfoTitle1996>Game Boy</HistoryInfoTitle1996>
             <HistoryInfoText>
@@ -38,19 +38,19 @@ const History = () => {
               role-playing game.
             </HistoryInfoText>
           </HistoryInfoContainer>
-          <HistoryDate>
+          <HistoryDate color="#ee4a4a">
             <HistoryIcon>
               <IGameboy size="64px" />
             </HistoryIcon>
-            <HistoryDateH11996>1996</HistoryDateH11996>
+            <h1 >1996</h1>
           </HistoryDate>
-        </History1996>
-        <History1988>
-          <HistoryDate>
+        </HistorySection>
+        <HistorySection color='#ffb000' direction='left'>
+          <HistoryDate color="#ffb000">
             <HistoryIcon>
               <IPikachu size="64px" />
             </HistoryIcon>
-            <HistoryDateH11998>1998</HistoryDateH11998>
+            <h1 >1998</h1>
           </HistoryDate>
           <HistoryInfoContainer>
             <HistoryInfoTitle1998>Pikachu</HistoryInfoTitle1998>
@@ -63,7 +63,7 @@ const History = () => {
               phenomenon
             </HistoryInfoText>
           </HistoryInfoContainer>
-        </History1988>
+        </HistorySection>
       </HistoryBody>
     </HistoryContainer>
   );
@@ -81,7 +81,7 @@ const HistoryContainer = styled.section`
 
 const HistoryBody = styled.div``;
 
-const History1980 = styled.div`
+const HistorySection = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -89,34 +89,8 @@ const History1980 = styled.div`
   margin-left: 10vw;
   margin-top: 5%;
   width: 80vw;
-  border-left: solid;
-  border-color: #6dd19a;
-  border-width: 0.5vw;
-`;
-
-const History1996 = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-left: 10vw;
-  margin-top: 5%;
-  width: 80vw;
-  border-right: solid;
-  border-color: #ee4a4a;
-  border-width: 0.5vw;
-`;
-
-const History1988 = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-left: 10vw;
-  margin-top: 5%;
-  width: 80vw;
-  border-left: solid;
-  border-color: #ffb000;
+  border-${({direction})=>direction}: solid;
+  border-color: ${({color})=>color};
   border-width: 0.5vw;
 `;
 
@@ -127,21 +101,11 @@ const HistoryDate = styled.div`
   justify-content: center;
   margin-right: auto;
   margin-left: auto;
-`;
 
-const HistoryDateH11980 = styled.h1`
-  align-self: center;
-  color: #6dd19a;
-`;
-
-const HistoryDateH11996 = styled.h1`
-  align-self: center;
-  color: #ee4a4a;
-`;
-
-const HistoryDateH11998 = styled.h1`
-  align-self: center;
-  color: #ffb000;
+  h1 {
+    align-self: center;
+    color: ${({color})=>color};
+  }
 `;
 
 const HistoryIcon = styled.div`
