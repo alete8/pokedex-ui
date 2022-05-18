@@ -1,58 +1,79 @@
 import React from 'react';
+import styled from 'styled-components';
+
 import { HeroWave } from '../../assets/icons/heroWave';
 import PokeButton from '../PokeButton/PokeButton';
-
 import './Video.css';
 
 const Video = () => {
   return (
-    <div id="video">
-      <div className="conteiner">
-        {/* <svg
-          viewBox="0 0 500 150"
-          preserveAspectRatio="none"
-          className="videoWaveUp"
-        >
-          <path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"></path>
-        </svg>
-        <svg
-          viewBox="0 0 500 150"
-          preserveAspectRatio="none"
-          className="videoWaveDown"
-        >
-          <path d="M0.00,49.98 C149.99,150.00 271.49,-49.98 500.00,49.98 L500.00,0.00 L0.00,0.00 Z"></path>
-        </svg> */}
-        <div className='videoWaveUp'>
-        <HeroWave/>
-        </div>
-        <div className='videoWaveDown'>
-        <HeroWave/>
-        </div>
-        <div className="conteinerVideo">
-          <div className="conteinerVideoFix">
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/uDIoEbbFKAY?controls=0"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-        <div className="videoText">
-          <h2> Checkout the Official Pokémon Youtube channel</h2>
-
-          <div className='videoButtonBox'>
-            <a href="https://www.youtube.com/c/PokemonLATAM">
-              <PokeButton variant='secondary' size='lg'>View more</PokeButton>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <VideoSectionContainer id="video">
+      <HeroWave height="150px" fill="white" direction="down" />
+      <VideoContent>
+        <VideoContainer>
+          <VideoIFrame
+            src="https://www.youtube.com/embed/uDIoEbbFKAY?controls=0"
+            frameBorder="0"
+            title="Pokemón"
+          ></VideoIFrame>
+        </VideoContainer>
+        <VideoText>
+          <span> Checkout the Official Pokémon Youtube channel</span>
+          <VideoBtn href="https://www.youtube.com/c/PokemonLATAM">
+            <PokeButton variant="secondary" size="lg">
+              View more
+            </PokeButton>
+          </VideoBtn>
+        </VideoText>
+      </VideoContent>
+      <HeroWave height="150px" fill="white" />
+    </VideoSectionContainer>
   );
 };
 
 export default Video;
+
+const VideoSectionContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  background-color: #0778a5;
+`;
+
+const VideoContent = styled.div`
+  display: flex;
+  justify-content:space-around;
+  align-items:center;
+  height:400px;
+`;
+
+const VideoContainer = styled.div`
+  display: flex;
+  flex:2;
+  max-width:50vw;
+  height:28vw;
+`;
+
+const VideoIFrame = styled.iframe`
+  width: 100%;
+  height: 100%;
+`;
+
+const VideoText = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width:30vw;
+  font-size: 3vw;
+  font-weight: bold;
+
+  span {
+    text-align: center;
+    font-size: 3vw;
+    margin-bottom:2vw;
+  }
+`;
+
+const VideoBtn = styled.a`
+  text-decoration: none;
+`;
