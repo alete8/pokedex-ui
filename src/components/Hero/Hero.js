@@ -43,9 +43,10 @@ const HeroContainer = styled.div`
 const HeroContentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 100%;
+  margin-top: 24px;
 
   @media (min-width: 768.1px) {
     flex-direction: row;
@@ -61,6 +62,8 @@ const HeroImageContainer = styled.div`
 
 const HeroImage = styled.img`
   width: 300px;
+  position: absolute;
+  top: 190px;
   z-index: 1;
 
   @media (min-width: 768.1px) {
