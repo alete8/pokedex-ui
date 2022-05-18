@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const HeroWave = ({ height, fill ,direction}) => (
+export const HeroWave = ({ height, fill, direction }) => (
   <WaveContainer height={height} direction={direction}>
     <WaveSvg viewBox="0 0 500 150" preserveAspectRatio="none">
       <WavePath
@@ -15,7 +15,7 @@ export const HeroWave = ({ height, fill ,direction}) => (
 const WaveContainer = styled.div`
   height: ${({ height }) => (height ? height : '150px')};
   overflow: hidden;
-  transform: ${({ direction }) => (direction==="down" && "rotate(180deg)")};
+  transform: ${({ direction }) => direction === 'down' && 'rotate(180deg)'};
 `;
 
 const WaveSvg = styled.svg`
