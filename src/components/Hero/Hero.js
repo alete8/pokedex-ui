@@ -34,7 +34,7 @@ const HeroContainer = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  
+
   @media (min-width: 768.1px) {
     height: 450px;
   }
@@ -85,9 +85,9 @@ const HeroTitle = styled.span`
 `;
 
 const HeroSubTitle = styled.span`
-font-size: 16px;
-line-height: 20px;
-margin-bottom: 12px;
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 12px;
 `;
 
 const WaveContainer = styled.div`

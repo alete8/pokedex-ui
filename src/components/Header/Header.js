@@ -31,7 +31,7 @@ const Header = () => {
 
   return (
     <HeaderTagStyled>
-      <HeaderContainer isScrolling={isScrolling}>
+      <HeaderContainer isScrolling={isScrolling} showMenu={showMenu}>
         <HeaderLogoContainer href="/">
           <Ipokeball size="32px" />
           <HeaderText>Pokedex</HeaderText>
@@ -72,7 +72,7 @@ const HeaderTagStyled = styled.header`
 `;
 
 const HeaderContainer = styled.div`
-  background-color: ${({ isScrolling }) => (isScrolling ? 'white' : '#f0f07b')};
+  background-color: ${({ isScrolling, showMenu }) => (isScrolling || showMenu ? 'white' : '#f0f07b')};
   display: flex;
   justify-content: space-between;
   align-items: center;
