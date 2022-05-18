@@ -1,55 +1,95 @@
-import React  from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import './Hero.css';
-import PokeButton from '../PokeButton/PokeButton';
-import { HeroWave } from '../../assets/icons/heroWave';
 
-const pikachuImg = require.context('../../assets', true);
+import PokeButton from '../PokeButton/PokeButton';
+import HeroPikachu from '../../assets/heroPikachu.png';
+import { HeroWave } from '../../assets/icons/heroWave';
 
 const Hero = () => {
   return (
-    <div id="home">
-    <HeaderInHero/>
-
-      <div className="home">
-        
-        <div className="homeImg">
-          <img
-            
-            src={pikachuImg('./heroPikachu.png')}
-            alt="Pikachu"
-            className="homeImgPikachu"
-          ></img>
-        </div>
-
-        <div id="home" className="homeWelcome">
-          <h1>Welcome to Pokedex</h1>
-          <p>Join our comunity to find Pokémon's news</p>
-        </div>
-      </div>
-
-      <div className="heroWave">  
-        <HeroWave size="64"/>
-      </div>
-      
-      <div className='heroButtonBox'>
-        <PokeButton>View more</PokeButton>
-      </div>
-    </div>
+    <HeroContainer id="home">
+      <HeroContentContainer>
+        <HeroImageContainer>
+          <HeroImage src={HeroPikachu} alt="Pikachu"></HeroImage>
+        </HeroImageContainer>
+        <HeroContent>
+          <HeroTitle>Welcome to Pokedex</HeroTitle>
+          <HeroSubTitle>Join our comunity to find Pokémon's news</HeroSubTitle>
+          <PokeButton>View more</PokeButton>
+        </HeroContent>
+      </HeroContentContainer>
+      <WaveContainer>
+        <HeroWave height="150px" fill="#ffffff" />
+      </WaveContainer>
+    </HeroContainer>
   );
 };
 
 export default Hero;
 
-
-const HeaderInHero = styled.div`
+const HeroContainer = styled.div`
+  background-color: #f0f07b;
+  width: 100%;
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
   
-  display:none;
+  @media (min-width: 768.1px) {
+    height: 450px;
+  }
+`;
+
+const HeroContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 
   @media (min-width: 768.1px) {
-      display: flex;
-      width: 100%;
-      height: 50px;
-}
+    flex-direction: row;
+    justify-content: end;
+    margin-right: 20%;
+  }
 `;
-  
+
+const HeroImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const HeroImage = styled.img`
+  width: 300px;
+  z-index: 1;
+
+  @media (min-width: 768.1px) {
+    position: absolute;
+    top: 0px;
+    left: 125px;
+  }
+`;
+
+const HeroContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const HeroTitle = styled.span`
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: bold;
+  margin: 12px 0px;
+`;
+
+const HeroSubTitle = styled.span`
+font-size: 16px;
+line-height: 20px;
+margin-bottom: 12px;
+`;
+
+const WaveContainer = styled.div`
+  z-index: 10;
+`;
