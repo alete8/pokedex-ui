@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import { HeroWave } from '../../assets/icons/heroWave';
 import PokeButton from '../PokeButton/PokeButton';
-import './Video.css';
 
 const Video = () => {
   return (
@@ -41,16 +40,16 @@ const VideoSectionContainer = styled.section`
 
 const VideoContent = styled.div`
   display: flex;
-  justify-content:space-around;
-  align-items:center;
-  height:400px;
+  justify-content: space-around;
+  align-items: center;
+  height: 40vw;
 `;
 
 const VideoContainer = styled.div`
   display: flex;
-  flex:2;
-  max-width:50vw;
-  height:28vw;
+  flex: 2;
+  max-width: 40vw;
+  height: 23vw;
 `;
 
 const VideoIFrame = styled.iframe`
@@ -63,14 +62,14 @@ const VideoText = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width:30vw;
+  max-width: 30vw;
   font-size: 3vw;
   font-weight: bold;
 
   span {
     text-align: center;
     font-size: 3vw;
-    margin-bottom:2vw;
+    margin-bottom: 2vw;
   }
 `;
 
