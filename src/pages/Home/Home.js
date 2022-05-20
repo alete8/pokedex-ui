@@ -61,7 +61,7 @@ const ToTop = styled.div`
   opacity: ${({ scrolling }) => (scrolling ? '1' : '0')};
   transition: opacity 0.5s ease;
   position: fixed;
-  bottom: 50px;
+  bottom: 65px;
   right: 40px;
   z-index: 50;
 `;

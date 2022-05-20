@@ -7,8 +7,10 @@ import { Ipokeball } from '../../assets/icons/pokeball';
 
 const History = () => {
   return (
-    <HistoryContainer id="history">
+    <HistoryContainer >
+
       <h1>Pokemon History</h1>
+      <HistoryAnchor id="history"/>
       <HistoryBody>
         <HistorySection color='#6dd19a' direction='left'>
           <HistoryDate color="#6dd19a">
@@ -77,6 +79,12 @@ const HistoryContainer = styled.section`
     text-align: center;
     font-size: 5vw;
   }
+`;
+
+const HistoryAnchor = styled.div`
+  display:flex;
+  position:absolute;
+  margin-top: -20vw;
 `;
 
 const HistoryBody = styled.div``;

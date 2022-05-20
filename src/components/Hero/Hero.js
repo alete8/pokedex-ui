@@ -7,7 +7,8 @@ import { HeroWave } from '../../assets/icons/heroWave';
 
 const Hero = () => {
   return (
-    <HeroContainer id="home">
+    <HeroContainer >
+      <HomeAnchor id="home"/>
       <HeroContentContainer>
         <HeroImageContainer>
           <HeroImage src={HeroPikachu} alt="Pikachu"></HeroImage>
@@ -38,6 +39,12 @@ const HeroContainer = styled.div`
   @media (min-width: 768.1px) {
     height: 450px;
   }
+`;
+
+const HomeAnchor = styled.div`
+  display:flex;
+  position:absolute;
+  margin-top: -3vw;
 `;
 
 const HeroContentContainer = styled.div`
