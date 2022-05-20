@@ -6,17 +6,18 @@ import PokeButton from '../PokeButton/PokeButton';
 
 const Video = () => {
   return (
-    <VideoSectionContainer id="video">
+    <VideoSectionContainer >
+      <VideoAnchor id="video"/>
       <HeroWave height="150px" fill="white" direction="down" />
-      <VideoContent>
-        <VideoContainer>
+      <VideoContent >
+        <VideoContainer >
           <VideoIFrame
             src="https://www.youtube.com/embed/uDIoEbbFKAY?controls=0"
             frameBorder="0"
             title="Pokemón"
           ></VideoIFrame>
         </VideoContainer>
-        <VideoText>
+        <VideoText >
           <span> Checkout the Official Pokémon Youtube channel</span>
           <VideoBtn href="https://www.youtube.com/c/PokemonLATAM">
             <PokeButton variant="secondary" size="lg">
@@ -36,6 +37,13 @@ const VideoSectionContainer = styled.section`
   display: flex;
   flex-direction: column;
   background-color: #0778a5;
+  
+`;
+
+const VideoAnchor = styled.div`
+  display:flex;
+  position:absolute;
+  margin-top: 3vw;
 `;
 
 const VideoContent = styled.div`

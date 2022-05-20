@@ -13,11 +13,12 @@ const PokeButton = ({
   fullWidth,
   size = 'md',
   variant = 'primary',
+  type='button',
 }) => {
   const Button = sizes[size];
   return (
-    <Button disabled={disabled} fullWidth={fullWidth} variant={variant}>
-      {children}
+    <Button disabled={disabled} fullWidth={fullWidth} variant={variant} type={type}>
+      {children} 
     </Button>
   );
 };
