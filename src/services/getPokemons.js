@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getPokemonById = (id) => {};
+// export const getPokemonById = (id) => {};
 
 export async function getAllPokemons() {
   let requests = [];
