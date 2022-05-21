@@ -2,7 +2,7 @@ const buildType = (pokemontype, types) => {
   if (!types) {
     types = pokemontype.type.name;
   } else {
-    types = types + ', ' + pokemontype.type.name;
+    types = types + ' - ' + pokemontype.type.name;
   }
   return types;
 };
