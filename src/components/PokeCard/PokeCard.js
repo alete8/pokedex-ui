@@ -1,7 +1,9 @@
 // TO DO
 // PokeCard, reutilizable. Debe recibir la data del pokemon y armar la Card.
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+
+import { FullHeart } from '../../assets/icons/favFullHeart';
 
 const bgColor = {
   grass:
@@ -33,21 +35,24 @@ const bgColor = {
 };
 
 const PokeCard = ({ pokemon }) => {
+  const [addFav, setAddFav] = useState(true);
+
   const tipo = pokemon.type.split(' - ');
   return (
-    
     <PokeCards pokemon={pokemon} bgColor={bgColor[tipo[0]]}>
       <Circle>
         <img src={pokemon.image} alt="Pokemon" />
       </Circle>
       <PokeCardText>{pokemon.name}</PokeCardText>
-      <span>{pokemon.type}</span>
+      <span>{pokemon.type}</span> 
+      <FavHeart addFav={addFav} onClick={() => setAddFav(!addFav)}>
+        <FullHeart size="60px" />
+      </FavHeart>
     </PokeCards>
   );
 };
 
 export default PokeCard;
-
 
 const PokeCards = styled.div`
   width: 200px;
@@ -81,4 +86,10 @@ const PokeCardText = styled.span`
   :first-letter {
     text-transform: capitalize;
   }
+`;
+
+const FavHeart = styled.div`
+  display;flex;
+  margin-top:1vw;
+  opacity:${({ addFav }) => (addFav ? '0.3' : '1')};
 `;

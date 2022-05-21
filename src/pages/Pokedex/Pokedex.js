@@ -6,6 +6,7 @@ import { getAllPokemons } from '../../services/getPokemons';
 import { buildPokemon } from '../../utils/buildPokemon';
 import PokeCard from '../../components/PokeCard/PokeCard';
 import PokeButton from '../../components/PokeButton/PokeButton';
+import { SearchIcon } from '../../assets/icons/searchIcon';
 
 const Pokedex = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -27,14 +28,22 @@ const Pokedex = () => {
 
   const [search, setSearch] = useState('Search');
 
+  /* const filtrar = (pokeSearching) => {
+    var searchResult = pokemons.filter((elemento) =>{
+      if (elemento.name.toString().toLowerCase().include(pokeSearching.toLowerCase()))
+      return searchResult;
+    })
+  } */
+
   return (
     <PokedexContainer>
       <Header />
       <PokeSearchContainer>
       <PokeSearch type='text' value={search}
           onFocus={() => setSearch('')}
-          onChange={(e) => setSearch(e.target.value)} />
-      <PokeButton/>
+          onChange={(e) => setSearch(e.target.value)}
+           />
+      <PokeButton variant='secondary'><SearchIcon size='24px'/></PokeButton>      
       </PokeSearchContainer>
       <PokedexCardsContainer>
         {pokemons.map((pokemon, idx) => (
@@ -59,9 +68,9 @@ const PokeSearchContainer = styled.div`
 
 const PokeSearch = styled.input`
 display:flex;
-padding:0.3vw;
+padding:0.5vw;
 justify-content:center;  
-width:50vw;
+width:30vw;
 border-radius:30px 30px;
 margin-right:1vw;
 `;
