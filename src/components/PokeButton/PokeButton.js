@@ -11,14 +11,28 @@ const PokeButton = ({
   children,
   disabled,
   fullWidth,
+  onClick,
   size = 'md',
   variant = 'primary',
-  type='button',
+  type = 'button',
 }) => {
   const Button = sizes[size];
+
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+
   return (
-    <Button disabled={disabled} fullWidth={fullWidth} variant={variant} type={type}>
-      {children} 
+    <Button
+      disabled={disabled}
+      fullWidth={fullWidth}
+      onClick={() => handleClick()}
+      variant={variant}
+      type={type}
+    >
+      {children}
     </Button>
   );
 };

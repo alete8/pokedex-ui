@@ -5,8 +5,7 @@ import Header from '../../components/Header/Header';
 import { getAllPokemons } from '../../services/getPokemons';
 import { buildPokemon } from '../../utils/buildPokemon';
 import PokeCard from '../../components/PokeCard/PokeCard';
-import PokeButton from '../../components/PokeButton/PokeButton';
-import { SearchIcon } from '../../assets/icons/searchIcon';
+import PokeSearchBar from '../../components/PokeSearchBar/PokeSearchBar';
 
 const Pokedex = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -20,34 +19,28 @@ const Pokedex = () => {
 
     for (let i = 0; i < 150; i++) {
       array.push(buildPokemon(apiResponse[i].data));
-      
     }
 
     setPokemons(array);
   };
 
-  const [search, setSearch] = useState('Search');
+  const filterPokemon = (text) => {
+    let pokemonsFiltered = pokemons.filter((pok) =>
+      pok.name.toLowerCase().includes(text.toLowerCase())
+    );
 
-  /* const filtrar = (pokeSearching) => {
-    var searchResult = pokemons.filter((elemento) =>{
-      if (elemento.name.toString().toLowerCase().include(pokeSearching.toLowerCase()))
-      return searchResult;
-    })
-  } */
+    setPokemons(pokemonsFiltered);
+  };
 
   return (
     <PokedexContainer>
       <Header />
       <PokeSearchContainer>
-      <PokeSearch type='text' value={search}
-          onFocus={() => setSearch('')}
-          onChange={(e) => setSearch(e.target.value)}
-           />
-      <PokeButton variant='secondary'><SearchIcon size='24px'/></PokeButton>      
+        <PokeSearchBar onSearch={(e) => filterPokemon(e)} />
       </PokeSearchContainer>
       <PokedexCardsContainer>
         {pokemons.map((pokemon, idx) => (
-          <PokeCard pokemon={pokemon} key={idx}/>
+          <PokeCard pokemon={pokemon} key={idx} />
         ))}
       </PokedexCardsContainer>
     </PokedexContainer>
@@ -59,20 +52,11 @@ export default Pokedex;
 const PokedexContainer = styled.div``;
 
 const PokeSearchContainer = styled.div`
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:row;
-  margin-top:2vw;
-`;
-
-const PokeSearch = styled.input`
-display:flex;
-padding:0.5vw;
-justify-content:center;  
-width:30vw;
-border-radius:30px 30px;
-margin-right:1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 2vw;
 `;
 
 const PokedexCardsContainer = styled.div`
@@ -82,14 +66,3 @@ const PokedexCardsContainer = styled.div`
   flex-wrap: wrap;
   padding: 38px 50px;
 `;
-
-/* const PokeCard = styled.div`
-  width: 200px;
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid black;
-  margin: 12px;
-`; */
