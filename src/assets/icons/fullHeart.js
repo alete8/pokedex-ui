@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const FullHeart = ({ size, isFav }) => (
+export const FullHeart = ({ size}) => (
 
 
   <svg
@@ -29,3 +29,5 @@ export const FullHeart = ({ size, isFav }) => (
     />
   </svg>
 );
+
+
