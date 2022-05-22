@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { FullHeart } from '../../assets/icons/favFullHeart';
+import { FullHeart } from '../../assets/icons/fullHeart';
+import { EmptyHeart } from '../../assets/icons/emptyHeart';
 
 const bgColor = {
   grass:
@@ -35,20 +36,32 @@ const bgColor = {
 };
 
 const PokeCard = ({ pokemon }) => {
-  const [addFav, setAddFav] = useState(true);
+  const [isFav, setIsFav] = useState(false);
+  const handleFav = (id) => {
+    setIsFav(!isFav);
+
+    const myFavs = localStorage.getItem('myFavs');
+
+    if (myFavs) {
+      localStorage.setItem('myFavs', [myFavs, id]);
+    } else {
+      localStorage.setItem('myFavs', id);
+    }
+
+    console.log(myFavs);
+  };
 
   const tipo = pokemon.type.split(' - ');
   return (
     <PokeCards pokemon={pokemon} bgColor={bgColor[tipo[0]]}>
-      <FavHeart addFav={addFav} onClick={() => setAddFav(!addFav)}>
-        <FullHeart size="32px" isFav={addFav}/>
+      <FavHeart addFav={isFav} onClick={() => handleFav(pokemon.id)}>
+        {isFav ? <FullHeart size="32px" /> : <EmptyHeart size="24" />}
       </FavHeart>
       <Circle>
         <img src={pokemon.image} alt="Pokemon" />
       </Circle>
       <PokeCardText>{pokemon.name}</PokeCardText>
-      <span>{pokemon.type}</span> 
-      
+      <span>{pokemon.type}</span>
     </PokeCards>
   );
 };
@@ -90,8 +103,7 @@ const PokeCardText = styled.span`
 `;
 
 const FavHeart = styled.div`
-  display:flex;
-  position:absolute;
-  transform:translate(60px, -100px);
-  opacity:${({ addFav }) => (addFav ? '0.3' : '1')};
+  display: flex;
+  position: absolute;
+  transform: translate(60px, -100px);
 `;
