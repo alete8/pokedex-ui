@@ -40,14 +40,15 @@ const PokeCard = ({ pokemon }) => {
   const tipo = pokemon.type.split(' - ');
   return (
     <PokeCards pokemon={pokemon} bgColor={bgColor[tipo[0]]}>
+      <FavHeart addFav={addFav} onClick={() => setAddFav(!addFav)}>
+        <FullHeart size="32px" isFav={addFav}/>
+      </FavHeart>
       <Circle>
         <img src={pokemon.image} alt="Pokemon" />
       </Circle>
       <PokeCardText>{pokemon.name}</PokeCardText>
       <span>{pokemon.type}</span> 
-      <FavHeart addFav={addFav} onClick={() => setAddFav(!addFav)}>
-        <FullHeart size="60px" />
-      </FavHeart>
+      
     </PokeCards>
   );
 };
@@ -89,7 +90,8 @@ const PokeCardText = styled.span`
 `;
 
 const FavHeart = styled.div`
-  display;flex;
-  margin-top:1vw;
+  display:flex;
+  position:absolute;
+  transform:translate(60px, -100px);
   opacity:${({ addFav }) => (addFav ? '0.3' : '1')};
 `;
