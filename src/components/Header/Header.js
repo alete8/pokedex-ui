@@ -4,10 +4,10 @@ import { Ipokeball } from '../../assets/icons/pokeball';
 import { Ihamburger } from '../../assets/icons/hamburger';
 
 const headerData = [
-  { label: 'Home', href: '#home' },
-  { label: 'History', href: '#history' },
-  { label: 'Video', href: '#video' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/' },
+  { label: 'History', href: '/#history' },
+  { label: 'Video', href: '/#video' },
+  { label: 'Contact', href: '/#contact' },
   { label: 'Pokedex', href: '/pokedex' },
   { label: 'MyFavs', href: '/my-favs' },
 ];

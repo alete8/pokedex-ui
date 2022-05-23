@@ -9,29 +9,29 @@ import PokeSearchBar from '../../components/PokeSearchBar/PokeSearchBar';
 
 const Pokedex = () => {
   const [pokemons, setPokemons] = useState([]);
-  const [Allpokemons, setAllPokemons] = useState([]);
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     getAllPokemons().then((response) => buildPokeArray(response));
   }, []);
 
-  const buildPokeArray = (apiResponse) => {
+  const buildPokeArray = (response) => {
     let array = [];
 
     for (let i = 0; i < 150; i++) {
-      array.push(buildPokemon(apiResponse[i].data));
+      array.push(buildPokemon(response[i].data));
     }
 
     setPokemons(array);
-    setAllPokemons (array);
+    setFavorites(array);
   };
 
   const filterPokemon = (text) => {
-    let pokemonsFiltered = Allpokemons.filter((pok) =>
+    let pokemonsFiltered = pokemons.filter((pok) =>
       pok.name.toLowerCase().includes(text.toLowerCase())
     );
 
-    setPokemons(pokemonsFiltered);
+    setFavorites(pokemonsFiltered);
   };
 
   return (
@@ -41,7 +41,7 @@ const Pokedex = () => {
         <PokeSearchBar onSearch={(e) => filterPokemon(e)} />
       </PokeSearchContainer>
       <PokedexCardsContainer>
-        {pokemons.map((pokemon, idx) => (
+        {favorites.map((pokemon, idx) => (
           <PokeCard pokemon={pokemon} key={idx} />
         ))}
       </PokedexCardsContainer>
@@ -57,8 +57,12 @@ const PokeSearchContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: row;
-  margin-top: 2vw;
+  box-sizing: border-box;
+  margin: 25px 50px;
+
+  @media (min-width: 768.1px) {
+    margin: 78px 150px 0px;
+  }
 `;
 
 const PokedexCardsContainer = styled.div`
@@ -66,5 +70,6 @@ const PokedexCardsContainer = styled.div`
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  padding: 38px 50px;
+  box-sizing: border-box;
+  margin: 38px 50px;
 `;

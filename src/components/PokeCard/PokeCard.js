@@ -1,6 +1,4 @@
-// TO DO
-// PokeCard, reutilizable. Debe recibir la data del pokemon y armar la Card.
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import { FullHeart } from '../../assets/icons/fullHeart';
@@ -38,42 +36,43 @@ const bgColor = {
 const PokeCard = ({ pokemon }) => {
   const [isFav, setIsFav] = useState(false);
 
-  const handleFav = (id) => {
-    setIsFav(!isFav);
-
-    const myFavs = localStorage.getItem('myFavs');
-    
-
-    if (myFavs) {
-      let inFav = myFavs.includes(id);
-      if (!inFav) {
-        localStorage.setItem('myFavs',[myFavs, id]);
-      } else {
-        deleteFav(id);
+  useEffect(() => {
+    // Initialize myFavs
+    if (localStorage.getItem('myFavs')) {
+      let favs = JSON.parse(localStorage.getItem('myFavs'));
+      if (favs.find((fav) => fav === pokemon.id)) {
+        setIsFav(true);
       }
     } else {
-      localStorage.setItem('myFavs', id);
+      let favs = [];
+      localStorage.setItem('myFavs', JSON.stringify(favs));
     }
-    console.log(myFavs);
+    // eslint-disable-next-line
+  }, []);
+
+  const handleAddRemoveFav = (id) => {
+    let favs = JSON.parse(localStorage.getItem('myFavs'));
+
+    if (favs.find((fav) => fav === id)) {
+      favs.splice(favs.indexOf(id), 1);
+      setIsFav(false);
+    } else {
+      favs.push(id);
+      setIsFav(true);
+    }
+
+    localStorage.setItem('myFavs', JSON.stringify(favs));
   };
 
-
-  const deleteFav = (id) => {
-    const favArray = localStorage.removeItem(id);
-    // favArray.splice(favArrayIndex,1); 
-    localStorage.setItem('myFavs',favArray);
-    console.log(favArray);
-  };
-
-  const tipo = pokemon.type.split(' - ');
+  const pokemonType = pokemon.type.split(' - ');
 
   return (
-    <PokeCards pokemon={pokemon} bgColor={bgColor[tipo[0]]}>
-      <FavHeart addFav={isFav} onClick={() => handleFav(pokemon.id)}>
+    <PokeCards pokemon={pokemon} bgColor={bgColor[pokemonType[0]]}>
+      <FavIcon onClick={() => handleAddRemoveFav(pokemon.id)}>
         {isFav ? <FullHeart size="32px" /> : <EmptyHeart size="24" />}
-      </FavHeart>
+      </FavIcon>
       <Circle>
-        <img src={pokemon.image} alt="Pokemon" />
+        <img src={pokemon.image} alt={pokemon.name} />
       </Circle>
       <PokeCardText>{pokemon.name}</PokeCardText>
       <span>{pokemon.type}</span>
@@ -94,11 +93,15 @@ const PokeCards = styled.div`
   background: ${({ bgColor }) => bgColor};
   filter: alpha(opacity=20);
   box-shadow: inset 1px 1px 4px #979797, 0 0 15px #ddd;
-  margin: 40px;
+  margin-bottom: 40px;
 
   :hover {
     transform: translateY(-7px);
     box-shadow: 0 7px 20px rgba(0, 0, 0, 0.4), inset 1px 1px 4px #979797;
+  }
+
+  @media (min-width: 768.1px) {
+    margin: 40px;
   }
 `;
 
@@ -117,7 +120,7 @@ const PokeCardText = styled.span`
   }
 `;
 
-const FavHeart = styled.div`
+const FavIcon = styled.div`
   display: flex;
   position: absolute;
   transform: translate(60px, -100px);
