@@ -37,21 +37,36 @@ const bgColor = {
 
 const PokeCard = ({ pokemon }) => {
   const [isFav, setIsFav] = useState(false);
+
   const handleFav = (id) => {
     setIsFav(!isFav);
 
     const myFavs = localStorage.getItem('myFavs');
+    
 
     if (myFavs) {
-      localStorage.setItem('myFavs', [myFavs, id]);
+      let inFav = myFavs.includes(id);
+      if (!inFav) {
+        localStorage.setItem('myFavs',[myFavs, id]);
+      } else {
+        deleteFav(id);
+      }
     } else {
       localStorage.setItem('myFavs', id);
     }
-
     console.log(myFavs);
   };
 
+
+  const deleteFav = (id) => {
+    const favArray = localStorage.removeItem(id);
+    // favArray.splice(favArrayIndex,1); 
+    localStorage.setItem('myFavs',favArray);
+    console.log(favArray);
+  };
+
   const tipo = pokemon.type.split(' - ');
+
   return (
     <PokeCards pokemon={pokemon} bgColor={bgColor[tipo[0]]}>
       <FavHeart addFav={isFav} onClick={() => handleFav(pokemon.id)}>

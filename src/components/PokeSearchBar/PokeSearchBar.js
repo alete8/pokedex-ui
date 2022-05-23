@@ -6,9 +6,11 @@ const PokeSearchBar = ({ onSearch }) => {
 
   const handleSearch = (e) => {
     setSearchValue(e);
-    if (onSearch) {
-      onSearch(e);
-    }
+    
+   if (onSearch) {
+        onSearch(e);
+    } 
+
   };
 
   return (

@@ -9,6 +9,7 @@ import PokeSearchBar from '../../components/PokeSearchBar/PokeSearchBar';
 
 const Pokedex = () => {
   const [pokemons, setPokemons] = useState([]);
+  const [Allpokemons, setAllPokemons] = useState([]);
 
   useEffect(() => {
     getAllPokemons().then((response) => buildPokeArray(response));
@@ -22,10 +23,11 @@ const Pokedex = () => {
     }
 
     setPokemons(array);
+    setAllPokemons (array);
   };
 
   const filterPokemon = (text) => {
-    let pokemonsFiltered = pokemons.filter((pok) =>
+    let pokemonsFiltered = Allpokemons.filter((pok) =>
       pok.name.toLowerCase().includes(text.toLowerCase())
     );
 
