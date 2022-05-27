@@ -6,6 +6,7 @@ import { getAllPokemons } from '../../services/getPokemons';
 import { buildPokemon } from '../../utils/buildPokemon';
 import PokeCard from '../../components/PokeCard/PokeCard';
 import PokeSearchBar from '../../components/PokeSearchBar/PokeSearchBar';
+import Footer from '../../components/Footer/Footer';
 
 const Pokedex = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -16,6 +17,7 @@ const Pokedex = () => {
   }, []);
 
   const buildPokeArray = (response) => {
+    console.log(response)
     let array = [];
 
     for (let i = 0; i < 150; i++) {
@@ -45,6 +47,7 @@ const Pokedex = () => {
           <PokeCard pokemon={pokemon} key={idx} />
         ))}
       </PokedexCardsContainer>
+      <Footer />
     </PokedexContainer>
   );
 };

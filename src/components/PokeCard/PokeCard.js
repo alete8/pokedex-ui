@@ -33,7 +33,7 @@ const bgColor = {
     'linear-gradient(0deg, rgba(222,187,144,0.3) 0%, rgba(233,166,71,0.3) 32%, rgba(232,230,154,0.3) 66%, rgba(236,187,89,0.3) 100%)',
 };
 
-const PokeCard = ({ pokemon }) => {
+const PokeCard = ({ pokemon, onClick }) => {
   const [isFav, setIsFav] = useState(false);
 
   useEffect(() => {
@@ -62,6 +62,10 @@ const PokeCard = ({ pokemon }) => {
     }
 
     localStorage.setItem('myFavs', JSON.stringify(favs));
+
+    if (onClick) {
+      onClick();
+    }
   };
 
   const pokemonType = pokemon.type.split(' - ');
