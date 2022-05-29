@@ -17,7 +17,6 @@ const Pokedex = () => {
   }, []);
 
   const buildPokeArray = (response) => {
-    console.log(response)
     let array = [];
 
     for (let i = 0; i < 150; i++) {

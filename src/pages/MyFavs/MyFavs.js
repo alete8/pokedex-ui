@@ -15,7 +15,6 @@ const Pokedex = () => {
     const myFavs = JSON.parse(localStorage.getItem('myFavs'));
     myFavs.sort((a, b) => a - b);
     getPokemonById(myFavs).then((response) => buildPokeArray(response));
-    console.log('apretaste');
   }, [favClicked]);
 
   const buildPokeArray = (response) => {
