@@ -55,7 +55,6 @@ const PokeCard = ({ pokemon, onClick }) => {
 
     if (favs.find((fav) => fav === id)) {
       favs.splice(favs.indexOf(id), 1);
-      setIsFav(false);
     } else {
       favs.push(id);
       setIsFav(true);
