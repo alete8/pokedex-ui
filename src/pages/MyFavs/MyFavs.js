@@ -13,7 +13,9 @@ const Pokedex = () => {
 
   useEffect(() => {
     const myFavs = JSON.parse(localStorage.getItem('myFavs'));
+    myFavs.sort((a,b) => a-b);
     getPokemonById(myFavs).then((response) => buildPokeArray(response));
+    console.log ('apretaste')
   }, [favClicked]);
 
   const buildPokeArray = (response) => {
@@ -51,7 +53,9 @@ const Pokedex = () => {
 
 export default Pokedex;
 
-const MyFavsContainer = styled.div``;
+const MyFavsContainer = styled.div`
+
+`;
 
 const MyFavsCardsContainer = styled.div`
   display: flex;
@@ -60,6 +64,7 @@ const MyFavsCardsContainer = styled.div`
   flex-wrap: wrap;
   box-sizing: border-box;
   margin: 38px 50px;
+  min-height:78.8vh;
 `;
 
 const MyFavsSpan = styled.span`
