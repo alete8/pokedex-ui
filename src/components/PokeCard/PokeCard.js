@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { FullHeart } from '../../assets/icons/fullHeart';
 import { EmptyHeart } from '../../assets/icons/emptyHeart';
@@ -36,6 +36,7 @@ const bgColor = {
 
 const PokeCard = ({ pokemon, onClick }) => {
   const [isFav, setIsFav] = useState(false);
+  const [flipped, setFlipped] = useState(false);
 
   useEffect(() => {
     // Initialize myFavs
@@ -70,45 +71,53 @@ const PokeCard = ({ pokemon, onClick }) => {
 
   const pokemonType = pokemon.type.split(' - ');
   const pokemonTypeIcon = pokemonType[0].toLowerCase();
-  console.log(pokemonTypeIcon);
 
   return (
-    <PokeCards pokemon={pokemon} bgColor={bgColor[pokemonType[0]]}>
-      <FavIcon onClick={() => handleAddRemoveFav(pokemon.id)}>
-        {isFav ? <FullHeart size="32px" /> : <EmptyHeart size="24" />}
-      </FavIcon>
-      <Circle>
-        <img src={pokemon.image} alt={pokemon.name} />
-      </Circle>
-
-      <PokeCardText>{pokemon.name}</PokeCardText>
-      <span>{pokemon.type}</span>
-      <IconTypeContainer>
-        <IconType poketype={pokemonTypeIcon} size="54px" />
-      </IconTypeContainer>
-    </PokeCards>
+    <PokeCardContainer pokemon={pokemon}>
+      <CardInner flipped={flipped}>
+        <CardFront bgColor={bgColor[pokemonType[0]]}>
+          <FavIcon onClick={() => handleAddRemoveFav(pokemon.id)}>
+            {isFav ? <FullHeart size="32px" /> : <EmptyHeart size="24" />}
+          </FavIcon>
+          <Circle>
+            <img src={pokemon.image} alt={pokemon.name} />
+          </Circle>
+          <PokeCardText>{pokemon.name}</PokeCardText>
+          <span>{pokemon.type}</span>
+          <IconTypeContainer>
+            <IconType poketype={pokemonTypeIcon} size="54px" />
+          </IconTypeContainer>
+          <button onClick={() => setFlipped(true)}>Flip</button>
+        </CardFront>
+        <CardBack>
+          <span>Back side</span>
+          <button onClick={() => setFlipped(false)}>Flip</button>
+        </CardBack>
+      </CardInner>
+    </PokeCardContainer>
   );
 };
 
 export default PokeCard;
 
-const PokeCards = styled.div`
+const PokeCardContainer = styled.div`
   width: 200px;
   height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 40px 40px;
-  background: ${({ bgColor }) => bgColor};
-  filter: alpha(opacity=20);
-  box-shadow: inset 1px 1px 4px #979797, 0 0 15px #ddd;
-  margin-bottom: 40px;
-  overflow: hidden;
+  border-radius: 20px 20px;
 
-  :hover {
-    transform: translateY(-7px);
-    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.4), inset 1px 1px 4px #979797;
+  transition: z-index 500ms, transform 500ms;
+  z-index: 0;
+  cursor: pointer;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+
+  &:focus,
+  &:hover {
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.4);
   }
 
   @media (min-width: 768.1px) {
@@ -116,7 +125,51 @@ const PokeCards = styled.div`
   }
 `;
 
+const CardInner = styled.div`
+  width: 100%;
+  min-width: 100%;
+  height: 100%;
+  border-radius: 20px 20px;
+  display: flex;
+  transition: transform 500ms;
+  transform-style: preserve-3d;
+
+  ${({ flipped }) =>
+  flipped &&
+  css`
+    transform: rotateY(180deg);
+  `}
+`;
+
+const CardSide = css`
+  border-radius: 20px 20px;
+  width: 100%;
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+`;
+
+const CardFront = styled.div`
+  ${CardSide};
+  background: ${({ bgColor }) => bgColor};
+  position: relative;
+  z-index: 0;
+`;
+
+const CardBack = styled.div`
+  ${CardSide};
+  transform: rotateY(-180deg) translate(100%, 0);
+
+  z-index: 1;
+`;
+
 const Circle = styled.div`
+  width: 100px;
+  height: 100px;
   background-color: #efedec;
   border-radius: 50%;
   box-shadow: 0 0 20px #979797;
@@ -136,12 +189,12 @@ const IconTypeContainer = styled.div`
   display: flex;
   margin-top: -40px;
   transform: translate(-60px, 55px);
-
   z-index: 1;
 `;
 
 const FavIcon = styled.div`
-  display: flex;
   position: absolute;
-  transform: translate(60px, -100px);
+  top: 0;
+  right: 0;
+  padding: 12px;
 `;
