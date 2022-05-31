@@ -35,6 +35,8 @@ const Pokedex = () => {
     setFavorites(pokemonsFiltered);
   };
 
+  let onMyFavsSection = false;
+
   return (
     <PokedexContainer>
       <Header />
@@ -43,7 +45,11 @@ const Pokedex = () => {
       </PokeSearchContainer>
       <PokedexCardsContainer>
         {favorites.map((pokemon, idx) => (
-          <PokeCard pokemon={pokemon} key={idx} />
+          <PokeCard
+            pokemon={pokemon}
+            key={idx}
+            onMyFavsSection={onMyFavsSection}
+          />
         ))}
       </PokedexCardsContainer>
       <Footer />
