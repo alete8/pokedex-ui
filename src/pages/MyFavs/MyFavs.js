@@ -26,6 +26,7 @@ const Pokedex = () => {
 
     setFavorites(favsAarray);
   };
+  let onMyFavsSection = true;
 
   return (
     <MyFavsContainer>
@@ -37,6 +38,7 @@ const Pokedex = () => {
               pokemon={pokemon}
               key={idx}
               onClick={() => setFavClicked(!favClicked)}
+              onMyFavsSection={onMyFavsSection}
             />
           ))
         ) : (

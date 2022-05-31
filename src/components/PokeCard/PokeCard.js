@@ -5,7 +5,7 @@ import { FullHeart } from '../../assets/icons/fullHeart';
 import { EmptyHeart } from '../../assets/icons/emptyHeart';
 import IconType from '../../assets/icons/types/TypesIcons';
 
-const PokeCard = ({ pokemon, onClick }) => {
+const PokeCard = ({ pokemon, onClick, onMyFavsSection }) => {
   const [isFav, setIsFav] = useState(false);
   const [flipped, setFlipped] = useState(false);
 
@@ -28,6 +28,9 @@ const PokeCard = ({ pokemon, onClick }) => {
 
     if (favs.find((fav) => fav === id)) {
       favs.splice(favs.indexOf(id), 1);
+      if (!onMyFavsSection) {
+        setIsFav(false);
+      }
     } else {
       favs.push(id);
       setIsFav(true);
@@ -50,7 +53,7 @@ const PokeCard = ({ pokemon, onClick }) => {
           <FavIcon onClick={() => handleAddRemoveFav(pokemon.id)}>
             {isFav ? <FullHeart size="32px" /> : <EmptyHeart size="24" />}
           </FavIcon>
-          <Circle>
+          <Circle onClick={() => setFlipped(true)}>
             <img src={pokemon.image} alt={pokemon.name} />
           </Circle>
           <PokeCardText>{pokemon.name}</PokeCardText>
@@ -58,11 +61,15 @@ const PokeCard = ({ pokemon, onClick }) => {
           <IconTypeContainer>
             <IconType poketype={pokemonTypeIcon} size="54px" />
           </IconTypeContainer>
-          <button onClick={() => setFlipped(true)}>Flip</button>
         </CardFront>
-        <CardBack>
-          <span>Back side</span>
-          <button onClick={() => setFlipped(false)}>Flip</button>
+        <CardBack bgColor={bgColor[pokemonType[0]]} onClick={() => setFlipped(false)}>
+          <span>Stats</span>
+          <span>HP: {pokemon.hp}</span>
+          <span>ATTACK: {pokemon.attack}</span>
+          <span>DEFENSE: {pokemon.defense}</span>
+          <span>SP. ATTACK: {pokemon.specialAttack}</span>
+          <span>SP. DEFENSE: {pokemon.specialDefense}</span>
+          <span>SPEED: {pokemon.speed}</span>
         </CardBack>
       </CardInner>
     </PokeCardContainer>
@@ -82,7 +89,7 @@ const PokeCardContainer = styled.div`
 
   transition: z-index 500ms, transform 500ms;
   z-index: 0;
-  cursor: pointer;
+
   perspective: 1000px;
   transform-style: preserve-3d;
 
@@ -106,10 +113,10 @@ const CardInner = styled.div`
   transform-style: preserve-3d;
 
   ${({ flipped }) =>
-  flipped &&
-  css`
-    transform: rotateY(180deg);
-  `}
+    flipped &&
+    css`
+      transform: rotateY(180deg);
+    `}
 `;
 
 const CardSide = css`
@@ -122,11 +129,11 @@ const CardSide = css`
   justify-content: center;
   align-items: center;
   backface-visibility: hidden;
+  background: ${({ bgColor }) => bgColor};
 `;
 
 const CardFront = styled.div`
   ${CardSide};
-  background: ${({ bgColor }) => bgColor};
   position: relative;
   z-index: 0;
 `;
@@ -134,6 +141,7 @@ const CardFront = styled.div`
 const CardBack = styled.div`
   ${CardSide};
   transform: rotateY(-180deg) translate(100%, 0);
+  cursor: pointer;
 
   z-index: 1;
 `;
@@ -144,6 +152,7 @@ const Circle = styled.div`
   background-color: #efedec;
   border-radius: 50%;
   box-shadow: 0 0 20px #979797;
+  cursor: pointer;
 `;
 
 const PokeCardText = styled.span`
@@ -168,6 +177,7 @@ const FavIcon = styled.div`
   top: 0;
   right: 0;
   padding: 12px;
+  z-index: 10;
 `;
 
 const bgColor = {
