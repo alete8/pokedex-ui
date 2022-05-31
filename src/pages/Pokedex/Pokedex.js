@@ -7,6 +7,7 @@ import { buildPokemon } from '../../utils/buildPokemon';
 import PokeCard from '../../components/PokeCard/PokeCard';
 import PokeSearchBar from '../../components/PokeSearchBar/PokeSearchBar';
 import Footer from '../../components/Footer/Footer';
+import FilterMenu from '../../components/FilterMenu/FilterMenu';
 
 const Pokedex = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -42,6 +43,14 @@ const Pokedex = () => {
       <Header />
       <PokeSearchContainer>
         <PokeSearchBar onSearch={(e) => filterPokemon(e)} />
+        <FilterMenu
+          options={[
+            { label: 'Filtro 1', value: 1 },
+            { label: 'Filtro 2', value: 2 },
+            { label: 'Filtro 3', value: 3 },
+          ]}
+          onOptionSelected={(e) => console.log(e)}
+        />
       </PokeSearchContainer>
       <PokedexCardsContainer>
         {favorites.map((pokemon, idx) => (
@@ -63,7 +72,7 @@ const PokedexContainer = styled.div``;
 
 const PokeSearchContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
   margin: 25px 50px;
