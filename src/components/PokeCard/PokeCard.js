@@ -51,7 +51,7 @@ const PokeCard = ({ pokemon, onClick, onMyFavsSection }) => {
       <CardInner flipped={flipped}>
         <CardFront bgColor={bgColor[pokemonType[0]]}>
           <FavIcon onClick={() => handleAddRemoveFav(pokemon.id)}>
-            {isFav ? <FullHeart size="32px" /> : <EmptyHeart size="24" />}
+            {isFav ? <FullHeart size="32px" /> : <EmptyHeart size="24px" />}
           </FavIcon>
           <Circle onClick={() => setFlipped(true)}>
             <img src={pokemon.image} alt={pokemon.name} />
@@ -62,14 +62,19 @@ const PokeCard = ({ pokemon, onClick, onMyFavsSection }) => {
             <IconType poketype={pokemonTypeIcon} size="54px" />
           </IconTypeContainer>
         </CardFront>
-        <CardBack bgColor={bgColor[pokemonType[0]]} onClick={() => setFlipped(false)}>
-          <span>Stats</span>
-          <span>HP: {pokemon.hp}</span>
-          <span>ATTACK: {pokemon.attack}</span>
-          <span>DEFENSE: {pokemon.defense}</span>
-          <span>SP. ATTACK: {pokemon.specialAttack}</span>
-          <span>SP. DEFENSE: {pokemon.specialDefense}</span>
-          <span>SPEED: {pokemon.speed}</span>
+        <CardBack
+          bgColor={bgColor[pokemonType[0]]}
+          onClick={() => setFlipped(false)}
+        >
+          <CardBackFieldset>
+            <CardBackLegend>Stats</CardBackLegend>
+            <span>HP: {pokemon.hp}</span>
+            <span>ATTACK: {pokemon.attack}</span>
+            <span>DEFENSE: {pokemon.defense}</span>
+            <span>SP. ATTACK: {pokemon.specialAttack}</span>
+            <span>SP. DEFENSE: {pokemon.specialDefense}</span>
+            <span>SPEED: {pokemon.speed}</span>
+          </CardBackFieldset>
         </CardBack>
       </CardInner>
     </PokeCardContainer>
@@ -144,6 +149,18 @@ const CardBack = styled.div`
   cursor: pointer;
 
   z-index: 1;
+`;
+
+const CardBackFieldset = styled.fieldset`
+  margin: 4px 12px 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const CardBackLegend = styled.legend`
+  padding: 5px;
+  font-weight: bold;
 `;
 
 const Circle = styled.div`
