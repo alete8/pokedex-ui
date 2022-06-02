@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import { FullHeart } from '../../assets/icons/fullHeart';
 import { EmptyHeart } from '../../assets/icons/emptyHeart';
 import IconType from '../../assets/icons/types/TypesIcons';
-import StatsBar from '../../assets/statsBar';
+import StatsBar from '../StatsBar/StatsBar';
 
 const PokeCard = ({ pokemon, onClick, onMyFavsSection }) => {
   const [isFav, setIsFav] = useState(false);
@@ -70,17 +70,17 @@ const PokeCard = ({ pokemon, onClick, onMyFavsSection }) => {
           <CardBackFieldset>
             <CardBackLegend>Stats</CardBackLegend>
             <span>HP:</span>
-            <StatsBar value={pokemon.hp} statColor='rgba(235,109,87,1)'/>
+            <StatsBar value={pokemon.hp} statColor='#eb6d57'/>
             <span>ATTACK: </span>
-            <StatsBar value={pokemon.attack} statColor=' rgba(252,234,187,1)'/>
+            <StatsBar value={pokemon.attack} statColor='#fceabb'/>
             <span>DEFENSE:</span>
-            <StatsBar value={pokemon.defense} statColor='rgba(89,131,255,1)'/>
+            <StatsBar value={pokemon.defense} statColor='#5983ff'/>
             <span>SP. ATTACK: </span>
-            <StatsBar value={pokemon.specialAttack} statColor='rgba(235,109,87,1)'/>
+            <StatsBar value={pokemon.specialAttack} statColor='#eb6d57'/>
             <span>SP. DEFENSE: </span>
-            <StatsBar value={pokemon.specialDefense} statColor=' rgba(252,234,187,1)'/>
+            <StatsBar value={pokemon.specialDefense} statColor='#fceabb'/>
             <span>SPEED:</span>
-            <StatsBar value={pokemon.speed} statColor='rgba(89,131,255,1)'/>
+            <StatsBar value={pokemon.speed} statColor='#5983ff'/>
           </CardBackFieldset>
         </CardBack>
       </CardInner>
