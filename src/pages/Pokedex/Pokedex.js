@@ -36,37 +36,83 @@ const Pokedex = () => {
     setFavorites(pokemonsFiltered);
   };
 
+  const SortById = (filteredPokemons) => {
+    filteredPokemons.sort((a, b) => {
+      if (a.id > b.id) {
+        return 1;
+      }
+      if (a.id < b.id) {
+        return -1;
+      }
+      return 0;
+    });
+    setFavorites(filteredPokemons);
+  };
+
+  const SortByName = (filteredPokemons) => {
+    filteredPokemons.sort((a, b) => {
+      if (a.name.toLowerCase() > b.name.toLowerCase()) {
+        return 1;
+      }
+      if (a.name.toLowerCase() < b.name.toLowerCase()) {
+        return -1;
+      }
+      return 0;
+    });
+    setFavorites(filteredPokemons);
+  };
+
+  const SortByType_Id = (filteredPokemons) => {
+    filteredPokemons.sort((a, b) => {
+      if (a.type[0] > b.type[0]) {
+        return 1;
+      }
+      if (a.type[0] < b.type[0]) {
+        return -1;
+      }
+      return 0;
+    });
+    setFavorites(filteredPokemons);
+  };
+
+  const SortByType_Name = (filteredPokemons) => {
+    filteredPokemons.sort((a, b) => {
+      if (a.type[0] > b.type[0]) {
+        return 1;
+      }
+      if (a.type[0] < b.type[0]) {
+        return -1;
+      }
+      if (a.name.toLowerCase() > b.name.toLowerCase()) {
+        return 1;
+      }
+      if (a.name.toLowerCase() < b.name.toLowerCase()) {
+        return -1;
+      }
+      return 0;
+    });
+    setFavorites(filteredPokemons);
+  };
+
   const handleOptionSelected = (option) => {
     let filteredPokemons = [...pokemons];
 
-    if (option.value === 1) {
-      filteredPokemons.sort((a, b) => {
-        if (a.id > b.id) {
-          return 1;
-        } else {
-          if (a.id < b.id) {
-            return -1;
-          } else {
-            return 0;
-          }
-        }
-      });
-      setFavorites(filteredPokemons);
-    } else {
-      if (option.value === 2) {
-        filteredPokemons.sort((a, b) => {
-          if (a.name.toLowerCase() > b.name.toLowerCase()) {
-            return 1;
-          } else {
-            if (a.name.toLowerCase() < b.name.toLowerCase()) {
-              return -1;
-            } else {
-              return 0;
-            }
-          }
-        });
-        setFavorites(filteredPokemons);
-      }
+    switch (option.value) {
+      case 1:
+        SortById(filteredPokemons);
+        break;
+      case 2:
+        SortByName(filteredPokemons);
+        break;
+      case 3:
+        SortByType_Id(filteredPokemons);
+        break;
+      case 4:
+        SortByType_Name(filteredPokemons);
+        break;
+      default:
+        SortById(filteredPokemons);
+        break;
     }
   };
 
@@ -81,7 +127,8 @@ const Pokedex = () => {
             options={[
               { label: 'Pokedex No.', value: 1 },
               { label: 'A-Z', value: 2 },
-              { label: 'Type', value: 3 },
+              { label: 'Type & Id', value: 3 },
+              { label: 'Type & Name', value: 4 },
             ]}
             onOptionSelected={(e) => handleOptionSelected(e)}
           />
