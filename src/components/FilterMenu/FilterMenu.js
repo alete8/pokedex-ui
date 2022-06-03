@@ -154,7 +154,7 @@ const FilterList = styled.ul`
   padding: 12px 0px;
   margin: 0;
   width: max-content;
-  max-height: 186px;
+  max-height: 190px;
   overflow-x: hidden;
   overflow-y: auto;
   position: absolute;
