@@ -36,6 +36,44 @@ const Pokedex = () => {
     setFavorites(pokemonsFiltered);
   };
 
+
+
+  const handleOptionSelected = (option) => {
+    if (option.value === 1) {
+      pokemons.sort((a, b) => {
+        if (a.id > b.id) {
+          return 1;
+        } else {
+          if (a.id < b.id) {
+            return -1;
+          } else {
+            return 0;
+          }
+        }
+      });
+      console.log('1');
+      console.log(pokemons);
+      setPokemons(pokemons);
+    } else {
+      if (option.value === 2) {
+        pokemons.sort((a, b) => {
+          if (a.name.toLowerCase() > b.name.toLowerCase()) {
+            return 1;
+          } else {
+            if (a.name.toLowerCase() < b.name.toLowerCase()) {
+              return -1;
+            } else {
+              return 0;
+            }
+          }
+        });
+        console.log('2');
+        console.log(pokemons);
+        setPokemons(pokemons);
+      }
+    }
+  };
+
   let onMyFavsSection = false;
 
   return (
@@ -45,11 +83,11 @@ const Pokedex = () => {
         <PokeSearchBar onSearch={(e) => filterPokemon(e)} />
         <FilterMenu
           options={[
-            { label: 'Filtro 1', value: 1 },
-            { label: 'Filtro 2', value: 2 },
-            { label: 'Filtro 3', value: 3 },
+            { label: 'Pokedex Id', value: 1 },
+            { label: 'A-Z', value: 2 },
+            { label: 'Type', value: 3 },
           ]}
-          onOptionSelected={(e) => console.log(e)}
+          onOptionSelected={(e) => handleOptionSelected(e)}
         />
       </PokeSearchContainer>
       <PokedexCardsContainer>

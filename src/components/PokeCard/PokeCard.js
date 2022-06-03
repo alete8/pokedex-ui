@@ -69,18 +69,18 @@ const PokeCard = ({ pokemon, onClick, onMyFavsSection }) => {
         >
           <CardBackFieldset>
             <CardBackLegend>Stats</CardBackLegend>
-            <span>HP:</span>
-            <StatsBar value={pokemon.hp} statColor='#eb6d57'/>
-            <span>ATTACK: </span>
-            <StatsBar value={pokemon.attack} statColor='#fceabb'/>
-            <span>DEFENSE:</span>
-            <StatsBar value={pokemon.defense} statColor='#5983ff'/>
-            <span>SP. ATTACK: </span>
-            <StatsBar value={pokemon.specialAttack} statColor='#eb6d57'/>
-            <span>SP. DEFENSE: </span>
-            <StatsBar value={pokemon.specialDefense} statColor='#fceabb'/>
-            <span>SPEED:</span>
-            <StatsBar value={pokemon.speed} statColor='#5983ff'/>
+            <span>HP</span>
+            <StatsBar value={pokemon.hp} statColor="#eb6d57" />
+            <span>ATTACK </span>
+            <StatsBar value={pokemon.attack} statColor="#fceabb" />
+            <span>DEFENSE</span>
+            <StatsBar value={pokemon.defense} statColor="#5983ff" />
+            <span>SP. ATTACK </span>
+            <StatsBar value={pokemon.specialAttack} statColor="#E69278" />
+            <span>SP. DEFENSE </span>
+            <StatsBar value={pokemon.specialDefense} statColor="#E3E7F1" />
+            <span>SPEED</span>
+            <StatsBar value={pokemon.speed} statColor="#84BE68" />
           </CardBackFieldset>
         </CardBack>
       </CardInner>
@@ -164,10 +164,18 @@ const CardBackFieldset = styled.fieldset`
   width: 70%;
   display: flex;
   flex-direction: column;
-  border-radius:10px 10px;
+  border-radius: 10px 10px;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    font-size:0.8em;
+    font-weight:bold;
+  }
 `;
 
 const CardBackLegend = styled.legend`
+  display: flex;
   padding: 5px;
   font-weight: bold;
 `;
