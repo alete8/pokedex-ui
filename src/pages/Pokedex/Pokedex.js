@@ -36,30 +36,109 @@ const Pokedex = () => {
     setFavorites(pokemonsFiltered);
   };
 
-  let onMyFavsSection = false;
+  const SortById = (filteredPokemons) => {
+    filteredPokemons.sort((a, b) => {
+      if (a.id > b.id) {
+        return 1;
+      }
+      if (a.id < b.id) {
+        return -1;
+      }
+      return 0;
+    });
+    setFavorites(filteredPokemons);
+  };
+
+  const SortByName = (filteredPokemons) => {
+    filteredPokemons.sort((a, b) => {
+      if (a.name.toLowerCase() > b.name.toLowerCase()) {
+        return 1;
+      }
+      if (a.name.toLowerCase() < b.name.toLowerCase()) {
+        return -1;
+      }
+      return 0;
+    });
+    setFavorites(filteredPokemons);
+  };
+
+  const SortByType_Id = (filteredPokemons) => {
+    filteredPokemons.sort((a, b) => {
+      if (a.type[0] > b.type[0]) {
+        return 1;
+      }
+      if (a.type[0] < b.type[0]) {
+        return -1;
+      }
+      return 0;
+    });
+    setFavorites(filteredPokemons);
+  };
+
+  const SortByType_Name = (filteredPokemons) => {
+    filteredPokemons.sort((a, b) => {
+      if (a.type[0] > b.type[0]) {
+        return 1;
+      }
+      if (a.type[0] < b.type[0]) {
+        return -1;
+      }
+      if (a.name.toLowerCase() > b.name.toLowerCase()) {
+        return 1;
+      }
+      if (a.name.toLowerCase() < b.name.toLowerCase()) {
+        return -1;
+      }
+      return 0;
+    });
+    setFavorites(filteredPokemons);
+  };
+
+  const handleOptionSelected = (option) => {
+    let filteredPokemons = [...pokemons];
+
+    switch (option.value) {
+      case 1:
+        SortById(filteredPokemons);
+        break;
+      case 2:
+        SortByName(filteredPokemons);
+        break;
+      case 3:
+        SortByType_Id(filteredPokemons);
+        break;
+      case 4:
+        SortByType_Name(filteredPokemons);
+        break;
+      default:
+        SortById(filteredPokemons);
+        break;
+    }
+  };
 
   return (
     <PokedexContainer>
       <Header />
       <PokeSearchContainer>
         <PokeSearchBar onSearch={(e) => filterPokemon(e)} />
-        <FilterMenu
-          options={[
-            { label: 'Filtro 1', value: 1 },
-            { label: 'Filtro 2', value: 2 },
-            { label: 'Filtro 3', value: 3 },
-          ]}
-          onOptionSelected={(e) => console.log(e)}
-        />
+        <FilterContainer>
+          <FilterText>Sort by</FilterText>
+          <FilterMenu
+            options={[
+              { label: 'Pokedex No.', value: 1 },
+              { label: 'A-Z', value: 2 },
+              { label: 'Type & Id', value: 3 },
+              { label: 'Type & Name', value: 4 },
+            ]}
+            onOptionSelected={(e) => handleOptionSelected(e)}
+          />
+        </FilterContainer>
       </PokeSearchContainer>
       <PokedexCardsContainer>
-        {favorites.map((pokemon, idx) => (
-          <PokeCard
-            pokemon={pokemon}
-            key={idx}
-            onMyFavsSection={onMyFavsSection}
-          />
-        ))}
+        {favorites &&
+          favorites.map((pokemon, idx) => (
+            <PokeCard pokemon={pokemon} key={idx} />
+          ))}
       </PokedexCardsContainer>
       <Footer />
     </PokedexContainer>
@@ -80,6 +159,17 @@ const PokeSearchContainer = styled.div`
   @media (min-width: 768.1px) {
     margin: 78px 150px 0px;
   }
+`;
+
+const FilterContainer = styled.div`
+  display: flex;
+`;
+
+const FilterText = styled.div`
+  color: black;
+  font-size: 18px;
+  line-height: 24px;
+  margin-right: 4px;
 `;
 
 const PokedexCardsContainer = styled.div`
